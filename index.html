@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link rel="stylesheet" href="style.css">
+<title>api</title>
+</head>
+
+<body>
+	<center>
+    <section>
+        <label id="heading"><h1>Check your avatar</h1></label><br>
+        <div id="maindiv">
+            <div id="field">Enter your name</div>
+            <div id="data"><input type="text" name="uname" id="name" required></div>
+            <div id="img"><img src="logo.png" id="image"></div>
+            <div id="button"><input type="submit" id="btn" value="Click me!"></div>
+        </div>
+    </section>
+    </center>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+			$("#name").keyup(function(){
+				this.value = this.value.replace(/[^a-zA-Z ]/g,'')
+			});
+            $("#btn").click(function(){
+				if($("#name").val()==""){
+					alert("Please enter a name!");
+				}
+				else{
+					c=$("#name").val();
+                	$("#image").attr("src",`https://joeschmoe.io/api/v1/${c}`);
+					$("#name").val('');
+				}
+            });
+        });
+    </script>
+</body>
+</html>
